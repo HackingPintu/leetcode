@@ -1,18 +1,20 @@
 class Solution {
     public int maxProduct(int n) {
-        List<Integer> list = new ArrayList<>();
+        int max1 = 0, max2 = 0;
 
         while(n > 0){
-            list.add(n % 10);
+            int digit = n % 10;
+
+            if(digit > max1){
+                max2 = max1;
+                max1 = digit;
+            }else if(digit > max2){
+                max2 = digit;
+            }
+
             n /= 10;
         }
-        int max = 0;
-        for(int i = 0; i < list.size(); i++){
-            for(int j = i + 1; j < list.size(); j++){
-                max = Math.max(max, list.get(i) * list.get(j));
-            }
-        }
 
-        return max;
+        return max1 * max2;
     }
 }
