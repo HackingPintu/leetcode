@@ -8,7 +8,7 @@ class Solution {
         while(k > 0){
             int top = pq.poll();
             sum += top;
-            pq.offer((int) Math.ceil((double) top / 3));
+            pq.offer((top + 2) / 3);
             k--;
         }
 
