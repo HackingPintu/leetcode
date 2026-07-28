@@ -1,7 +1,7 @@
 
 class Solution {
     public int minAddToMakeValid(String s) {
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         
         for (char c : s.toCharArray()) {
             if (c == ')') {
