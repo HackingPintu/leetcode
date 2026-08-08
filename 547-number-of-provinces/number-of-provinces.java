@@ -11,27 +11,30 @@ class Solution {
         // }
 
         // return total;
-        List<List<Integer>> adj = new ArrayList<>();
         int size = isConnected.length;
-        for(int i = 0; i <= size; i++){
-            adj.add(new ArrayList<>());
-        }
-        for(int i = 0; i < size; i++){
-            for(int j = 0; j < isConnected[i].length; j++){
-                if(i == j) continue;
-                if(isConnected[i][j] == 1){
-                    adj.get(i + 1).add(j + 1);
-                }
-            }
-        }
+        // List<List<Integer>> adj = new ArrayList<>();
+        // for(int i = 0; i <= size; i++){
+        //     adj.add(new ArrayList<>());
+        // }
+        // for(int i = 0; i < size; i++){
+        //     for(int j = 0; j < isConnected[i].length; j++){
+        //         if(i == j) continue;
+        //         if(isConnected[i][j] == 1){
+        //             adj.get(i + 1).add(j + 1);
+        //         }
+        //     }
+        // }
         DisJointSet ds = new DisJointSet(size + 1);
-        for(int i = 0; i <= size; i++){
-            for(int j : adj.get(i)){
-                int parentU = ds.findParent(i);
-                int parentV = ds.findParent(j);
-                if(parentU != parentV){
-                    ds.unionBySize(i, j);
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                if(isConnected[i][j] == 1){
+                    int parentU = ds.findParent(i + 1);
+                    int parentV = ds.findParent(j + 1);
+                    if(parentU != parentV){
+                        ds.unionBySize(i + 1, j + 1);
+                    }
                 }
+                
             }
         }
 
