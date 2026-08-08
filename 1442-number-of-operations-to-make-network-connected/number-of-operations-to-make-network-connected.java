@@ -1,26 +1,26 @@
 class Solution {
     public int makeConnected(int n, int[][] connections) {
         if(n - 1 > connections.length  ) return -1;
-        List<List<Integer>> adj = new ArrayList<>();
-        for(int i = 0; i < n; i++){
-            adj.add(new ArrayList<>());
-        }
+        // List<List<Integer>> adj = new ArrayList<>();
+        // for(int i = 0; i < n; i++){
+        //     adj.add(new ArrayList<>());
+        // }
 
-        for(int[] conn : connections){
-            int u = conn[0];
-            int v = conn[1];
-            adj.get(u).add(v);
-            adj.get(v).add(u);
-        }
+        // for(int[] conn : connections){
+        //     int u = conn[0];
+        //     int v = conn[1];
+        //     adj.get(u).add(v);
+        //     adj.get(v).add(u);
+        // }
         DisJointSet ds = new DisJointSet(n);
-        for(int i = 0; i < n; i++){
-            for(int j : adj.get(i)){
-                int parentU = ds.findParent(i);
-                int parentV = ds.findParent(j);
+        for(int[] conn : connections){
+            int i = conn[0];
+            int j = conn[1];
+            int parentU = ds.findParent(i);
+            int parentV = ds.findParent(j);
 
-                if(parentU != parentV){
-                    ds.unionBySize(i, j);
-                }
+            if(parentU != parentV){
+                ds.unionBySize(i, j);
             }
         }
         return ds.totalConnectedComponents() - 1;
