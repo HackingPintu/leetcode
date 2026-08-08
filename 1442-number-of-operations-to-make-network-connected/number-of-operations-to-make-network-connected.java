@@ -23,17 +23,19 @@ class Solution {
                 ds.unionBySize(i, j);
             }
         }
-        return ds.totalConnectedComponents() - 1;
+        return ds.components - 1;
     }
 }
 
 class DisJointSet{
     int[] parent;
     int[] size;
+    int components;
 
     public DisJointSet(int size){
         this.parent = new int[size];
         this.size = new int[size];
+        this.components = size;
 
         for(int i = 0; i < size; i++){
             this.parent[i] = i;
@@ -58,13 +60,8 @@ class DisJointSet{
                 parent[parentU] = parentV;
                 size[parentV] += size[parentU];
             }
+            components--;
         }
     }
-    public int totalConnectedComponents(){
-        int total = 0;
-        for(int i = 0; i < parent.length; i++){
-            if(parent[i] == i) total++;
-        }
-        return total; 
-    }
+    
 }
