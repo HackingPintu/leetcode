@@ -12,7 +12,7 @@ class Solution {
             return memo[n];
         }
         
-        memo[n] = solver(n - 1, memo) + solver(n - 2, memo);
-        return memo[n];
+        return memo[n] = solver(n - 1, memo) + solver(n - 2, memo);
+        // return memo[n];
     }
 }
