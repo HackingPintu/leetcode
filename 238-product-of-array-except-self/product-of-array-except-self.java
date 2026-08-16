@@ -16,7 +16,7 @@ class Solution {
             for (int i = 0; i < n; i++){
                 ans[i] = totalProduct / nums[i]; 
             }
-        }else if(zeroFound == 1){
+        }else if (zeroFound == 1){
             ans[idx] = totalProduct;
         }
         return ans;
