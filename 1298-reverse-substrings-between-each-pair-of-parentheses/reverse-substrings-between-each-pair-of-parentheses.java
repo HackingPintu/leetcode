@@ -1,7 +1,8 @@
 class Solution {
     public String reverseParentheses(String s) {
         StringBuilder sb = new StringBuilder();
-        Stack<Integer> stack = new Stack<>();
+        // Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         
         for (char c : s.toCharArray()) {
             if (c == '(') {
